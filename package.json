@@ -1,0 +1,38 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "prettier:check": "prettier --check './src/**/*.{js,ts}'",
+    "prettier:fix": "prettier --fix './src/**/*.{ts,js}'",
+    "gulp": "gulp",
+    "node": "nodemon dist/index.js & echo $! > .pid",
+    "gulp:watch": "nodemon --watch src --ext ts,js,cjs,pug,ejs,scss --exec npm run gulp",
+    "dev": "npm run gulp:watch && npm run node"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "hpp": "^0.2.3",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/gulp": "^4.0.13",
+    "@types/hpp": "^0.2.2",
+    "@types/node": "^20.4.5",
+    "del": "^7.0.0",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.0",
+    "sass": "^1.64.1",
+    "typescript": "^5.1.6"
+  }
+}
