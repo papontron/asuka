@@ -7,11 +7,10 @@ import gulpSass from 'gulp-sass';
 const sass = gulpSass(dartSass);
 const tsProject = ts.createProject('tsconfig.json');
 
-export async function stopNode() {}
 async function compileTs() {
   tsProject.src().pipe(tsProject()).js.pipe(gulp.dest('dist'));
 }
-async function clean() {
+export async function clean() {
   return del.deleteSync(['./dist']);
 }
 async function copyViews() {

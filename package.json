@@ -10,7 +10,8 @@
     "gulp": "gulp",
     "node": "nodemon dist/index.js & echo $! > .pid",
     "gulp:watch": "nodemon --watch src --ext ts,js,cjs,pug,ejs,scss --exec npm run gulp",
-    "dev": "npm run gulp:watch && npm run node"
+    "watch": "concurrently \"npm run gulp:watch\" \"npm run node\"",
+    "dev": "npm run gulp && npm run watch"
   },
   "keywords": [],
   "author": "",
