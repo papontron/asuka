@@ -1,9 +1,11 @@
 version: '3'
 services:
   gulp:
-    image: papontron/gulp
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - /app/node_modules
       - .:/app
     ports:
-      - 3000:3000
+      - 4000:3000

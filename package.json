@@ -5,13 +5,17 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "watch:styles":"nodemon --watch src/public/sass --ext scss,sass --exec gulp watchStyles",
+    "watch:assets":"nodemon --watch src/public/assets --ext jpg,jpeg,webp,png --exec gulp watchAssets",
+    "watch:views":"nodemon --watch src/views --ext pug,ejs --exec gulp watchViews",
+    "watch:ts":"tsc --watch",
+    "tsc":"tsc",
+    "watch:node":"nodemon dist/index.js",
+    "all":"concurrently \"npm run watch:styles\" \"npm run watch:assets\" \"npm run watch:views\" \"npm run watch:ts\" \"npm run watch:node\"",
     "prettier:check": "prettier --check './src/**/*.{js,ts}'",
     "prettier:fix": "prettier --fix './src/**/*.{ts,js}'",
     "gulp": "gulp",
-    "node": "nodemon dist/index.js & echo $! > .pid",
-    "gulp:watch": "nodemon --watch src --ext ts,js,cjs,pug,ejs,scss --exec npm run gulp",
-    "watch": "concurrently \"npm run gulp:watch\" \"npm run node\"",
-    "dev": "npm run gulp && npm run watch"
+    "dev":"npm run gulp && npm run tsc && npm run all"
   },
   "keywords": [],
   "author": "",
