@@ -1,5 +1,6 @@
-import sumar from './subdirectory/sub';
+import { a, b } from './sub.js';
+function sumar(a: number, b: number) {
+  return a + b;
+}
 
-console.log(sumar(10, 29) + sumar(12, 34) + 45);
-console.log('great');
-console.log('working correctly');
+console.log(sumar(a, b) + sumar(12, 34) + 45);

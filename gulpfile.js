@@ -1,15 +1,10 @@
 import gulp from 'gulp';
-import ts from 'gulp-typescript';
 import * as del from 'del';
 import * as fs from 'fs';
 import * as dartSass from 'sass';
 import gulpSass from 'gulp-sass';
-const sass = gulpSass(dartSass);
-const tsProject = ts.createProject('tsconfig.json');
 
-async function compileTs() {
-  tsProject.src().pipe(tsProject()).js.pipe(gulp.dest('dist'));
-}
+const sass = gulpSass(dartSass);
 
 export async function clean() {
   return del.deleteSync(['./dist']);
@@ -71,6 +66,5 @@ export async function watchStyles() {
 export default gulp.series(
   clean,
   createPackageJson,
-  gulp.parallel(copyData, copyAssets, copyViews, buildStyles),
-  compileTs
+  gulp.parallel(copyData, copyAssets, copyViews, buildStyles)
 );

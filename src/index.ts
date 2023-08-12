@@ -1,2 +1,3 @@
-import App from './app';
+exports = {};
+import App from './app.js';
 new App();
