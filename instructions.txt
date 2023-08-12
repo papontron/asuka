@@ -1,1 +1,2 @@
 run "npm run dev" in production enviroment
+run "docker compose -f docker-compose-dev.yml up" to develop with docker

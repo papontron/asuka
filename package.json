@@ -5,17 +5,20 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "watch:styles":"nodemon --watch src/public/sass --ext scss,sass --exec gulp watchStyles",
-    "watch:assets":"nodemon --watch src/public/assets --ext jpg,jpeg,webp,png --exec gulp watchAssets",
-    "watch:views":"nodemon --watch src/views --ext pug,ejs --exec gulp watchViews",
-    "watch:ts":"tsc --watch",
-    "tsc":"tsc",
-    "watch:node":"nodemon dist/index.js",
-    "all":"concurrently \"npm run watch:styles\" \"npm run watch:assets\" \"npm run watch:views\" \"npm run watch:ts\" \"npm run watch:node\"",
+    "webpack": "webpack",
+    "watch:data":"nodemon --watch src/data --ext json,csv,sql,tsv,txt,pdf --exec gulp watchData",
+    "watch:styles": "nodemon --watch src/public/sass --ext scss,sass --exec gulp watchStyles",
+    "watch:assets": "nodemon --watch src/public/assets --ext jpg,jpeg,webp,png --exec gulp watchAssets",
+    "watch:views": "nodemon --watch src/views --ext pug,ejs --exec gulp watchViews",
+    "watch:scripts":"nodemon --watch dist/public/js --ext js --exec npm run webpack ",
+    "watch:ts": "tsc --watch",
+    "tsc": "tsc",
+    "watch:node": "nodemon dist/index.js",
+    "all": "concurrently \"npm run watch:data\" \"npm run watch:styles\" \"npm run watch:assets\" \"npm run watch:views\" \"npm run watch:ts\" \"npm run watch:node\" \"npm run watch:scripts\"",
     "prettier:check": "prettier --check './src/**/*.{js,ts}'",
     "prettier:fix": "prettier --fix './src/**/*.{ts,js}'",
     "gulp": "gulp",
-    "dev":"npm run gulp && npm run tsc && npm run all"
+    "dev": "npm run gulp && npm run tsc && npm run webpack && npm run all"
   },
   "keywords": [],
   "author": "",
@@ -38,6 +41,8 @@
     "nodemon": "^3.0.1",
     "prettier": "^3.0.0",
     "sass": "^1.64.1",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   }
 }

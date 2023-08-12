@@ -3,6 +3,6 @@ interface DevKeys {
   [key: string]: string | undefined;
 }
 const devKeys: DevKeys = {
-  port: '4000'
+  port: '3000'
 };
 module.exports = devKeys;

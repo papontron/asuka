@@ -25,7 +25,17 @@ export async function watchViews() {
   const task = gulp.series(cleanViews, copyViews);
   task();
 }
-
+//data
+async function cleanData() {
+  del.deleteSync(['./dist/data']);
+}
+async function copyData() {
+  gulp.src('./src/data/**/*').pipe(gulp.dest('./dist/data'));
+}
+export async function watchData() {
+  const task = gulp.series(cleanData, copyData);
+  task();
+}
 //ASSETS
 async function copyAssets() {
   gulp.src('./src/public/assets/**/*').pipe(gulp.dest('./dist/public/assets'));
@@ -61,6 +71,6 @@ export async function watchStyles() {
 export default gulp.series(
   clean,
   createPackageJson,
-  gulp.parallel(copyAssets, copyViews, buildStyles),
+  gulp.parallel(copyData, copyAssets, copyViews, buildStyles),
   compileTs
 );

@@ -6,7 +6,9 @@ import path from 'path';
 const keys = require('./keys');
 export default class App {
   private _app: express.Application = express();
-  private _server = this._app.listen(keys.port);
+  private _server = this._app.listen(keys.port, () =>
+    console.log('listening on port: ' + keys.port)
+  );
   private _router = Router();
   constructor() {
     this.loadSettings();
@@ -14,7 +16,7 @@ export default class App {
     this.loadRoutes();
   }
   private applyMiddlewares() {
-    this._app.use(helmet());
+    // this._app.use(helmet());
     this._app.use(hpp());
     this._app.use(express.static(path.resolve(__dirname, 'public')));
     this._app.use(express.urlencoded({ extended: true }));
